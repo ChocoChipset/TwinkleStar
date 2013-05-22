@@ -23,6 +23,8 @@
 		3A1AFF48174D67A80015B705 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1AFF23174D67A80015B705 /* Foundation.framework */; };
 		3A1AFF50174D67A80015B705 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A1AFF4E174D67A80015B705 /* InfoPlist.strings */; };
 		3A1AFF53174D67A80015B705 /* TwinkleStarExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF52174D67A80015B705 /* TwinkleStarExampleTests.m */; };
+		3A1AFF5E174D6DB30015B705 /* HZTwinkleStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */; };
+		3A1AFF5F174D6DB30015B705 /* HZTwinkleStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		3A1AFF4F174D67A80015B705 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A1AFF51174D67A80015B705 /* TwinkleStarExampleTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwinkleStarExampleTests.h; sourceTree = "<group>"; };
 		3A1AFF52174D67A80015B705 /* TwinkleStarExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwinkleStarExampleTests.m; sourceTree = "<group>"; };
+		3A1AFF5C174D6DB30015B705 /* HZTwinkleStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HZTwinkleStar.h; path = ../../Source/HZTwinkleStar.h; sourceTree = "<group>"; };
+		3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HZTwinkleStar.m; path = ../../Source/HZTwinkleStar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		3A1AFF15174D67A80015B705 = {
 			isa = PBXGroup;
 			children = (
+				3A1AFF60174D6DBF0015B705 /* Source */,
 				3A1AFF27174D67A80015B705 /* TwinkleStarExample */,
 				3A1AFF4B174D67A80015B705 /* TwinkleStarExampleTests */,
 				3A1AFF20174D67A80015B705 /* Frameworks */,
@@ -158,6 +163,16 @@
 				3A1AFF4E174D67A80015B705 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A1AFF60174D6DBF0015B705 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3A1AFF5C174D6DB30015B705 /* HZTwinkleStar.h */,
+				3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */,
+			);
+			name = Source;
+			path = TwinkleStarExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +289,7 @@
 				3A1AFF2E174D67A80015B705 /* main.m in Sources */,
 				3A1AFF32174D67A80015B705 /* HZAppDelegate.m in Sources */,
 				3A1AFF3E174D67A80015B705 /* HZViewController.m in Sources */,
+				3A1AFF5E174D6DB30015B705 /* HZTwinkleStar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A1AFF53174D67A80015B705 /* TwinkleStarExampleTests.m in Sources */,
+				3A1AFF5F174D6DB30015B705 /* HZTwinkleStar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
