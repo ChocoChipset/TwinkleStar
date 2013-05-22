@@ -1,0 +1,5 @@
+language: objective-c
+before_script:
+  - cd TwinkleStarExample 
+env:
+  - XCODEBUILD_SETTINGS="-sdk iphonesimulator"
