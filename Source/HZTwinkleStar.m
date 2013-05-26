@@ -19,6 +19,12 @@ CGFloat kDefaultFrequency = 0.0;
 NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 
+@interface HZTwinkleStar ()
+
+@property (nonatomic, weak) AVCaptureDevice *captureDevice;
+
+@end
+
 
 @implementation HZTwinkleStar
 
@@ -31,10 +37,37 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     if (self)
     {
         _flashFrequency = kDefaultFrequency;
+        _captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     }
     
     return self;
     
+}
+
+#pragma mark - Flash LED operations
+
+-(void)turnFlashLEDOn
+{
+    if ([self isFlashLEDAvailable])
+    {
+        [self.captureDevice lockForConfiguration:nil];
+        
+        [self.captureDevice setTorchMode:AVCaptureTorchModeOn];
+        
+        [self.captureDevice unlockForConfiguration];
+    }    
+}
+
+-(void)turnFlashLEDOff
+{
+    if ([self isFlashLEDAvailable])
+    {
+        [self.captureDevice lockForConfiguration:nil];
+        
+        [self.captureDevice setTorchMode:AVCaptureFlashModeOff];
+        
+        [self.captureDevice unlockForConfiguration];
+    }
 }
 
 
@@ -42,10 +75,8 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 -(BOOL)isFlashLEDAvailable
 {
-    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    
-    BOOL result = ([captureDevice hasFlash] &&
-                   [captureDevice isFlashAvailable]);
+    BOOL result = ([self.captureDevice hasTorch] &&
+                   [self.captureDevice isTorchAvailable]);
     
     return result;
 }
