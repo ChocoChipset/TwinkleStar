@@ -10,4 +10,11 @@
 
 @interface HZTwinkleStar : NSObject
 
+@property (nonatomic, unsafe_unretained) CGFloat flashFrequency;
+@property (nonatomic, unsafe_unretained, readonly, getter = isFlashLEDAvailable) BOOL flashLEDAvailable;
+
+-(void)turnFlashLEDOn;
+-(void)turnFlashLEDOff;
+
+
 @end
