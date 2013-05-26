@@ -22,6 +22,8 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 @interface HZTwinkleStar ()
 
 @property (nonatomic, weak) AVCaptureDevice *captureDevice;
+@property (nonatomic, strong) NSTimer *frequencyTimer;
+@property (nonatomic, unsafe_unretained) BOOL flashLEDOn;
 
 -(void)setTorchMode:(AVCaptureTorchMode)paramTorchMode;
 
@@ -53,7 +55,11 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     if ([self isFlashLEDAvailable])
     {
         [self setTorchMode:AVCaptureTorchModeOn];
-    }    
+        
+        [self startTimer];  
+    }
+    
+    self.flashLEDOn = YES;
 }
 
 -(void)turnFlashLEDOff
@@ -62,10 +68,43 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     {
         [self setTorchMode:AVCaptureFlashModeOff];
     }
+    
+    [self stopTimer];
+    
+    self.flashLEDOn = NO;
 }
 
 
 #pragma mark - Private Methods
+
+-(void)startTimer
+{
+    // Discussion: Start in main thread? Timer blocked by UI events. Review.
+    
+    if (!self.frequencyTimer &&
+        self.flashFrequency != 0.0)
+    {
+        self.frequencyTimer = [NSTimer scheduledTimerWithTimeInterval:TimeIntervalForFrequency(self.flashFrequency)
+                                                               target:self
+                                                             selector:@selector(toggleTorchModeWithTimer:)
+                                                             userInfo:nil
+                                                              repeats:YES];
+    }
+}
+
+-(void)stopTimer
+{
+    // Discussion: Ensure call is made from same thread as -startTimer ?
+    
+    [self.frequencyTimer invalidate];
+    self.frequencyTimer = nil;
+}
+
+-(void)restartTimer
+{
+    [self stopTimer];
+    [self startTimer];
+}
 
 -(void)setTorchMode:(AVCaptureTorchMode)paramTorchMode
 {
@@ -76,8 +115,45 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     [self.captureDevice unlockForConfiguration];
 }
 
+-(void)toggleTorchModeWithTimer:(NSTimer *)paramTimer
+{
+    if ([self.captureDevice isTorchActive])
+    {
+        [self setTorchMode:AVCaptureTorchModeOff];
+    }
+    else
+    {
+        [self setTorchMode:AVCaptureTorchModeOn];
+    }
+}
+
+-(void)toggleTorchModeToMatchFlashLEDFlag
+{
+    if (self.flashLEDOn != [self.captureDevice isTorchActive])
+    {
+        [self toggleTorchModeWithTimer:nil];
+    }
+}
 
 #pragma mark - Custom Accessors
+
+-(void)setFlashFrequency:(CGFloat)paramFlashFrequency
+{
+    CGFloat previousFrequency = _flashFrequency;
+    
+    _flashFrequency = paramFlashFrequency;
+    
+    if (self.frequencyTimer ||
+        previousFrequency == 0.0)
+    {
+        [self restartTimer];
+    }
+    
+    if (paramFlashFrequency == 0.0)
+    {
+        [self toggleTorchModeToMatchFlashLEDFlag];
+    }
+}
 
 -(BOOL)isFlashLEDAvailable
 {
