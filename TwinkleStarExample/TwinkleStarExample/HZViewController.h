@@ -10,4 +10,10 @@
 
 @interface HZViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UISlider *frequencySlider;
+
+- (IBAction)turnFlashOnButton:(id)sender;
+- (IBAction)turnFlashOffButton:(id)sender;
+- (IBAction)valueChangeInSlider:(id)sender;
+
 @end
