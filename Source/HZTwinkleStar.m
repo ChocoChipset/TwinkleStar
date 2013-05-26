@@ -23,6 +23,8 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 @property (nonatomic, weak) AVCaptureDevice *captureDevice;
 
+-(void)setTorchMode:(AVCaptureTorchMode)paramTorchMode;
+
 @end
 
 
@@ -50,11 +52,7 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 {
     if ([self isFlashLEDAvailable])
     {
-        [self.captureDevice lockForConfiguration:nil];
-        
-        [self.captureDevice setTorchMode:AVCaptureTorchModeOn];
-        
-        [self.captureDevice unlockForConfiguration];
+        [self setTorchMode:AVCaptureTorchModeOn];
     }    
 }
 
@@ -62,16 +60,24 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 {
     if ([self isFlashLEDAvailable])
     {
-        [self.captureDevice lockForConfiguration:nil];
-        
-        [self.captureDevice setTorchMode:AVCaptureFlashModeOff];
-        
-        [self.captureDevice unlockForConfiguration];
+        [self setTorchMode:AVCaptureFlashModeOff];
     }
 }
 
 
-#pragma mark - Custom Accessors 
+#pragma mark - Private Methods
+
+-(void)setTorchMode:(AVCaptureTorchMode)paramTorchMode
+{
+    [self.captureDevice lockForConfiguration:nil];
+    
+    [self.captureDevice setTorchMode:paramTorchMode];
+    
+    [self.captureDevice unlockForConfiguration];
+}
+
+
+#pragma mark - Custom Accessors
 
 -(BOOL)isFlashLEDAvailable
 {
