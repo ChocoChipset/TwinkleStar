@@ -8,6 +8,10 @@
 
 #import "HZTwinkleStar.h"
 
+#pragma mark - Constants
+
+CGFloat kDefaultFrequency = 0.0;
+
 
 #pragma mark - Other Functions Headers
 
@@ -15,6 +19,22 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 
 @implementation HZTwinkleStar
+
+#pragma mark - Initializers
+
+-(id)init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        _flashFrequency = kDefaultFrequency;
+    }
+    
+    return self;
+    
+}
+
 
 @end
 
