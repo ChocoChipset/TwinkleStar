@@ -7,6 +7,7 @@
 //
 
 #import "HZTwinkleStar.h"
+#import <AVFoundation/AVFoundation.h>
 
 #pragma mark - Constants
 
@@ -16,6 +17,7 @@ CGFloat kDefaultFrequency = 0.0;
 #pragma mark - Other Functions Headers
 
 NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
+
 
 
 @implementation HZTwinkleStar
@@ -35,6 +37,18 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     
 }
 
+
+#pragma mark - Custom Accessors 
+
+-(BOOL)isFlashLEDAvailable
+{
+    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    BOOL result = ([captureDevice hasFlash] &&
+                   [captureDevice isFlashAvailable]);
+    
+    return result;
+}
 
 @end
 
