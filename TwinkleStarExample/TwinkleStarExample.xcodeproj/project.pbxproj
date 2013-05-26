@@ -25,6 +25,8 @@
 		3A1AFF53174D67A80015B705 /* TwinkleStarExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF52174D67A80015B705 /* TwinkleStarExampleTests.m */; };
 		3A1AFF5E174D6DB30015B705 /* HZTwinkleStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */; };
 		3A1AFF5F174D6DB30015B705 /* HZTwinkleStar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */; };
+		3A8D0C8817526C7F00F75FD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8D0C8717526C7F00F75FD0 /* AVFoundation.framework */; };
+		3A8D0C8917526C9F00F75FD0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8D0C8717526C7F00F75FD0 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,7 @@
 		3A1AFF52174D67A80015B705 /* TwinkleStarExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwinkleStarExampleTests.m; sourceTree = "<group>"; };
 		3A1AFF5C174D6DB30015B705 /* HZTwinkleStar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HZTwinkleStar.h; path = ../../Source/HZTwinkleStar.h; sourceTree = "<group>"; };
 		3A1AFF5D174D6DB30015B705 /* HZTwinkleStar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HZTwinkleStar.m; path = ../../Source/HZTwinkleStar.m; sourceTree = "<group>"; };
+		3A8D0C8717526C7F00F75FD0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8D0C8817526C7F00F75FD0 /* AVFoundation.framework in Frameworks */,
 				3A1AFF22174D67A80015B705 /* UIKit.framework in Frameworks */,
 				3A1AFF24174D67A80015B705 /* Foundation.framework in Frameworks */,
 				3A1AFF26174D67A80015B705 /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +85,7 @@
 			files = (
 				3A1AFF46174D67A80015B705 /* SenTestingKit.framework in Frameworks */,
 				3A1AFF47174D67A80015B705 /* UIKit.framework in Frameworks */,
+				3A8D0C8917526C9F00F75FD0 /* AVFoundation.framework in Frameworks */,
 				3A1AFF48174D67A80015B705 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +116,7 @@
 		3A1AFF20174D67A80015B705 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A8D0C8717526C7F00F75FD0 /* AVFoundation.framework */,
 				3A1AFF21174D67A80015B705 /* UIKit.framework */,
 				3A1AFF23174D67A80015B705 /* Foundation.framework */,
 				3A1AFF25174D67A80015B705 /* CoreGraphics.framework */,
@@ -473,6 +479,7 @@
 				3A1AFF58174D67A80015B705 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A1AFF59174D67A80015B705 /* Build configuration list for PBXNativeTarget "TwinkleStarExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +488,7 @@
 				3A1AFF5B174D67A80015B705 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
