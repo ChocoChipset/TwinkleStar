@@ -10,6 +10,7 @@
 
 @interface HZViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *frequencyLabel;
 @property (weak, nonatomic) IBOutlet UISlider *frequencySlider;
 
 - (IBAction)turnFlashOnButton:(id)sender;

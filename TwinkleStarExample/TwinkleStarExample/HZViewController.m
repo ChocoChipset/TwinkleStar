@@ -37,6 +37,8 @@
 - (IBAction)valueChangeInSlider:(id)sender
 {
     self.twinkleStar.flashFrequency = self.frequencySlider.value;
+    self.frequencyLabel.text = [NSString stringWithFormat:@"%i",
+                                (NSUInteger)floor(self.twinkleStar.flashFrequency)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,8 +47,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-    [self setFrequencySlider:nil];
+- (void)viewDidUnload
+{
+    self.frequencyLabel = nil;
+    self.frequencySlider = nil;
+    
     [super viewDidUnload];
 }
 @end
