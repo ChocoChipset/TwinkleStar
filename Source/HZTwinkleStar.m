@@ -36,6 +36,8 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 -(id)init
 {
+    // Discussion: Enforce the single instance in init?
+    
     self = [super init];
     
     if (self)
@@ -45,7 +47,19 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
     }
     
     return self;
+}
+
++(HZTwinkleStar *)sharedTwinkleStar
+{
+    static HZTwinkleStar *_StaticTwinkleStar = nil;
     
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        _StaticTwinkleStar = [[self alloc] init];
+    });
+    
+    return _StaticTwinkleStar;
 }
 
 #pragma mark - Flash LED operations

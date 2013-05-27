@@ -13,6 +13,8 @@
 @property (nonatomic, unsafe_unretained) CGFloat flashFrequency;
 @property (nonatomic, unsafe_unretained, readonly, getter = isFlashLEDAvailable) BOOL flashLEDAvailable;
 
++(HZTwinkleStar *)sharedTwinkleStar;
+
 -(void)turnFlashLEDOn;
 -(void)turnFlashLEDOff;
 
