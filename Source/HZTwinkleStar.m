@@ -52,26 +52,26 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 -(void)turnFlashLEDOn
 {
+    self.flashLEDOn = YES;
+    
     if ([self isFlashLEDAvailable])
     {
         [self setTorchMode:AVCaptureTorchModeOn];
         
         [self startTimer];  
     }
-    
-    self.flashLEDOn = YES;
 }
 
 -(void)turnFlashLEDOff
 {
+    [self stopTimer];
+    
+    self.flashLEDOn = NO;
+    
     if ([self isFlashLEDAvailable])
     {
         [self setTorchMode:AVCaptureFlashModeOff];
     }
-    
-    [self stopTimer];
-    
-    self.flashLEDOn = NO;
 }
 
 
