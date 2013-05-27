@@ -78,17 +78,17 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 #pragma mark - Private Methods
 
 -(void)startTimer
-{
-    // Discussion: Start in main thread? Timer blocked by UI events. Review.
-    
+{    
     if (!self.frequencyTimer &&
         self.flashFrequency != 0.0)
     {
-        self.frequencyTimer = [NSTimer scheduledTimerWithTimeInterval:TimeIntervalForFrequency(self.flashFrequency)
-                                                               target:self
-                                                             selector:@selector(toggleTorchModeWithTimer:)
-                                                             userInfo:nil
-                                                              repeats:YES];
+        self.frequencyTimer = [NSTimer timerWithTimeInterval:TimeIntervalForFrequency(self.flashFrequency)
+                                                      target:self
+                                                    selector:@selector(toggleTorchModeWithTimer:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+        
+        [[NSRunLoop mainRunLoop] addTimer:self.frequencyTimer forMode:NSRunLoopCommonModes];
     }
 }
 
