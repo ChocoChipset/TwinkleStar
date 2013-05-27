@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad
 {
-    self.twinkleStar = [[HZTwinkleStar alloc] init];
+    self.twinkleStar = [HZTwinkleStar sharedTwinkleStar];
     
     [super viewDidLoad];
 }
