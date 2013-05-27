@@ -139,17 +139,14 @@ NSTimeInterval TimeIntervalForFrequency(CGFloat frequency_in_hz);
 
 -(void)setFlashFrequency:(CGFloat)paramFlashFrequency
 {
-    CGFloat previousFrequency = _flashFrequency;
-    
     _flashFrequency = paramFlashFrequency;
     
-    if (self.frequencyTimer ||
-        previousFrequency == 0.0)
+    if (self.flashLEDOn)    
     {
         [self restartTimer];
     }
     
-    if (paramFlashFrequency == 0.0)
+    if (_flashFrequency == 0.0)
     {
         [self toggleTorchModeToMatchFlashLEDFlag];
     }
